@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/progress_bar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.register.RegisterActivity">
+
+    <ImageView
+        android:id="@+id/iv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="225dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:contentDescription="@string/tct_reg_desc_iv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/register" />
+
+    <TextView
+        android:id="@+id/tv_register_dong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/txt_register_dong"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_register" />
+
+    <TextView
+        android:id="@+id/tv_dsp_name_reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/nama"
+        app:layout_constraintStart_toStartOf="@+id/tv_register_dong"
+        app:layout_constraintTop_toBottomOf="@+id/tv_register_dong" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_name_ed"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:helperText="@string/txt_required"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dsp_name_reg"
+        app:startIconDrawable="@drawable/baseline_account_circle_24">
+
+        <com.dicoding.submissionintermediatebiel.view.register.NameCustomEdit
+            android:id="@+id/ed_register_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_dsp_email_reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/txt_email_pls"
+        app:layout_constraintStart_toStartOf="@+id/layout_name_ed"
+        app:layout_constraintTop_toBottomOf="@+id/layout_name_ed" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_email_ed"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        app:helperText="@string/txt_required"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_dsp_email_reg"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dsp_email_reg"
+        app:startIconDrawable="@drawable/baseline_email_24">
+
+        <com.dicoding.submissionintermediatebiel.view.register.EmailCustomEdit
+            android:id="@+id/ed_register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_dsp_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/txt_pass_pls"
+        app:layout_constraintStart_toStartOf="@+id/layout_email_ed"
+        app:layout_constraintTop_toBottomOf="@+id/layout_email_ed" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_pass_ed"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:counterEnabled="true"
+        app:endIconMode="password_toggle"
+        app:helperText="@string/txt_required"
+        app:layout_constraintEnd_toEndOf="@+id/layout_email_ed"
+        app:layout_constraintStart_toStartOf="@+id/layout_email_ed"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dsp_pass"
+        app:startIconDrawable="@drawable/baseline_password_24">
+
+        <com.dicoding.submissionintermediatebiel.view.login.PasswordCustomEdit
+            android:id="@+id/ed_register_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_login_access"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/dark_gray"
+        android:text="@string/buat_akun"
+        app:icon="@drawable/baseline_how_to_reg_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/layout_pass_ed"
+        app:layout_constraintStart_toStartOf="@+id/layout_pass_ed" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

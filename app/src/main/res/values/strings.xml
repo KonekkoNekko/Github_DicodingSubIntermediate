@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">SubmissionIntermediateBiel</string>
+    <string name="message_main_page">Selamat Datang di Aplikasi Story App.</string>
+    <string name="logout">Logout</string>
+    <string name="logo_story_app">Logo Story App</string>
+    <string name="title_welcome">Selamat Datang di Aplikasi Story App!</string>
+    <string name="desc_iv">Gambar menyambut Selamat Datang di Story App!</string>
+    <string name="tv_desc">Selamat Datang di Aplikasi Story App ini! Di sini, kamu bisa mengunggah story kamu berupa gambar dan deskripsi dengan membagikannya ke dunia!</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="txt_email_pls">Email</string>
+    <string name="txt_pass_pls">Password</string>
+    <string name="txt_pls_login">Silahkan Login Dulu ya~</string>
+    <string name="txt_img_login">Gambar seorang wanita sedang membuka Login Page</string>
+    <string name="txt_required">Wajib Diisi*</string>
+    <string name="txt_register_dong">Silahkan Register Dulu~</string>
+    <string name="nama">Nama</string>
+    <string name="masuk">Masuk</string>
+    <string name="buat_akun">Buat Akun</string>
+    <string name="tct_reg_desc_iv">Seorang perempuan sedang membuka halaman Register sambil tengkurap</string>
+</resources>
