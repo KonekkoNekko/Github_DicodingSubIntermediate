@@ -2,6 +2,8 @@ package com.dicoding.submissionintermediatebiel.data.api
 
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiService {
@@ -11,12 +13,15 @@ interface ApiService {
         @Field("name") name: String,
         @Field("email") email: String,
         @Field("password") password: String,
-    ) : GeneralResponse
+    ): GeneralResponse
 
     @FormUrlEncoded
     @POST("login")
     suspend fun login(
         @Field("email") email: String,
         @Field("password") password: String,
-    ) : LoginResponse
+    ): LoginResponse
+
+    @GET("stories")
+    suspend fun getStories(): FetchAllStoryResponse
 }

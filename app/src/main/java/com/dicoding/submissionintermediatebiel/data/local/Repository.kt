@@ -1,6 +1,7 @@
 package com.dicoding.submissionintermediatebiel.data.local
 
 import com.dicoding.submissionintermediatebiel.data.api.ApiService
+import com.dicoding.submissionintermediatebiel.data.api.FetchAllStoryResponse
 import com.dicoding.submissionintermediatebiel.data.api.GeneralResponse
 import com.dicoding.submissionintermediatebiel.data.api.LoginResponse
 import com.dicoding.submissionintermediatebiel.data.pref.UserModel
@@ -29,6 +30,10 @@ class Repository private constructor(
 
     suspend fun register(name: String, email: String, password: String): GeneralResponse{
         return apiService.register(name, email, password)
+    }
+
+    suspend fun getStories(): FetchAllStoryResponse{
+        return apiService.getStories()
     }
 
     companion object {

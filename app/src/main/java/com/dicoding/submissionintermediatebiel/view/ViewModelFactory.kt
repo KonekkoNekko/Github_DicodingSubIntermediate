@@ -8,6 +8,7 @@ import com.dicoding.submissionintermediatebiel.data.local.Repository
 import com.dicoding.submissionintermediatebiel.view.login.LoginViewModel
 import com.dicoding.submissionintermediatebiel.view.main.MainViewModel
 import com.dicoding.submissionintermediatebiel.view.register.RegisterViewModel
+import com.dicoding.submissionintermediatebiel.view.storylist.StoryListViewModel
 
 class ViewModelFactory(private val repository: Repository) : ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
@@ -21,6 +22,9 @@ class ViewModelFactory(private val repository: Repository) : ViewModelProvider.N
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(StoryListViewModel::class.java) -> {
+                StoryListViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

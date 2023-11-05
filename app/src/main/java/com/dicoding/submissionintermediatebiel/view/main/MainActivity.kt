@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import com.dicoding.submissionintermediatebiel.databinding.ActivityMainBinding
 import com.dicoding.submissionintermediatebiel.view.ViewModelFactory
 import com.dicoding.submissionintermediatebiel.view.login.LoginActivity
+import com.dicoding.submissionintermediatebiel.view.storylist.StoryListActivity
 import com.dicoding.submissionintermediatebiel.view.welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.getSession().observe(this){user ->
             if (!user.isLogin){
                 startActivity(Intent(this, WelcomeActivity::class.java))
+                finish()
+            } else {
+                startActivity(Intent(this, StoryListActivity::class.java))
                 finish()
             }
 
