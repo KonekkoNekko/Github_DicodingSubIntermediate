@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.submissionintermediatebiel.data.local.Injection
 import com.dicoding.submissionintermediatebiel.data.local.Repository
+import com.dicoding.submissionintermediatebiel.view.features.AddStoryViewModel
 import com.dicoding.submissionintermediatebiel.view.login.LoginViewModel
 import com.dicoding.submissionintermediatebiel.view.main.MainViewModel
 import com.dicoding.submissionintermediatebiel.view.register.RegisterViewModel
@@ -25,6 +26,9 @@ class ViewModelFactory(private val repository: Repository) : ViewModelProvider.N
             }
             modelClass.isAssignableFrom(StoryListViewModel::class.java) -> {
                 StoryListViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
+                AddStoryViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

@@ -1,7 +1,6 @@
 package com.dicoding.submissionintermediatebiel
 
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
 
 object Util {
@@ -11,7 +10,7 @@ object Util {
 
         return try {
             val date = inputFormat.parse(iso8601Date)
-            outputFormat.format(date)
+            outputFormat.format(date!!)
         } catch (e: Exception) {
             "Invalid Date" // Handle any parsing or formatting errors
         }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SubmissionIntermediateBiel</string>
+    <string name="app_name">Story App</string>
     <string name="message_main_page">Selamat Datang di Aplikasi Story App.</string>
     <string name="logout">Logout</string>
     <string name="logo_story_app">Logo Story App</string>

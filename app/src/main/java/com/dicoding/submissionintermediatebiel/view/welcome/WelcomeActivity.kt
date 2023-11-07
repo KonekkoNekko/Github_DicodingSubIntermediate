@@ -27,6 +27,7 @@ class WelcomeActivity : AppCompatActivity() {
         binding.btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
+        supportActionBar?.hide()
     }
 
     private fun animation() {

@@ -36,10 +36,12 @@ android {
 
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
+    val cameraxVersion = "1.2.3"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -59,6 +61,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+
+    implementation("androidx.camera:camera-camera2:$cameraxVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+    implementation("androidx.camera:camera-view:$cameraxVersion")
+    implementation("androidx.exifinterface:exifinterface:1.3.6")
 
     implementation("com.github.bumptech.glide:glide:4.16.0")
 }

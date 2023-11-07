@@ -40,6 +40,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         animation()
+        supportActionBar?.hide()
     }
 
     private fun showAlert(it: String?) {

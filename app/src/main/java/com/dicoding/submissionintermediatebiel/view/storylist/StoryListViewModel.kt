@@ -29,9 +29,6 @@ class StoryListViewModel(private val repository: Repository): ViewModel() {
             getStories()
         }
     }
-    fun getSession(): LiveData<UserModel>{
-        return repository.getSession().asLiveData()
-    }
 
     private suspend fun getStories(){
         _isLoading.value = true
@@ -48,6 +45,12 @@ class StoryListViewModel(private val repository: Repository): ViewModel() {
             _isErrorMessage.value = errorMessage!!
         } finally {
             _isLoading.value = false
+        }
+    }
+
+    fun logout(){
+        viewModelScope.launch {
+            repository.logout()
         }
     }
 }

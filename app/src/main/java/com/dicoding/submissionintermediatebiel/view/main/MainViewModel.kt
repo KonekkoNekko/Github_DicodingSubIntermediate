@@ -9,6 +9,10 @@ import com.dicoding.submissionintermediatebiel.data.pref.UserModel
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
+    init {
+        getSession()
+    }
+
     fun getSession(): LiveData<UserModel>{
         return repository.getSession().asLiveData()
     }

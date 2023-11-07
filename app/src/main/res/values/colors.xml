@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bit_cream">#FAEBD7</color>
     <color name="dark_gray">#37474F</color>
+    <color name="red">#F44336</color>
 </resources>

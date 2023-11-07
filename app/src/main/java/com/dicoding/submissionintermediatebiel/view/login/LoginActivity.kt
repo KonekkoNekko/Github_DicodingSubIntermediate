@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -28,9 +29,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.btnLoginAccess.setOnClickListener {
-            viewModelLogin.isLoading.observe(this){
+            viewModelLogin.isLoading.observe(this) {
                 showLoading(it)
             }
 
@@ -42,20 +42,37 @@ class LoginActivity : AppCompatActivity() {
                 try {
                     val result = viewModelLogin.loginUser(email, password)
                     val message = result.message
-                    if (message != "error"){
+                    if (message != "error") {
                         val token = result.loginResult?.token.toString()
-                        viewModelLogin.saveSession(UserModel(email, token))
-                        buildDialog.apply {
-                            setTitle("Berhasil!")
-                            setMessage(result.message)
-                            setPositiveButton("Baik"){ _, _, ->
-                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                startActivity(intent)
-                                finish()
+                        Log.d("Token Login Act:", token)
+                        val isSessionSaved = viewModelLogin.saveSession(UserModel(email, token))
+                        if (isSessionSaved) {
+                            buildDialog.apply {
+                                setTitle("Berhasil!")
+                                setMessage(result.message)
+                                setPositiveButton("Baik") { _, _ ->
+                                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                    intent.flags =
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    startActivity(intent)
+                                    finish()
+                                }
+                                val alert = create()
+                                alert.show()
                             }
-                            val alert = create()
-                            alert.show()
+                        } else {
+                            buildDialog.apply {
+                                setTitle("Alert")
+                                setMessage("Coba Login Kembali")
+                                setPositiveButton("Ok") { _, _ ->
+                                    val intentStay =
+                                        Intent(this@LoginActivity, LoginActivity::class.java)
+                                    startActivity(intentStay)
+                                }
+                                val alertMessage = create()
+                                alertMessage.setTitle("Alert")
+                                alertMessage.show()
+                            }
                         }
                     }
                 } catch (e: HttpException) {
@@ -66,7 +83,8 @@ class LoginActivity : AppCompatActivity() {
                         setTitle("Alert")
                         setMessage(errorMessage)
                         setPositiveButton("Ok") { _, _ ->
-                            val intentStay = Intent(this@LoginActivity, RegisterActivity::class.java)
+                            val intentStay =
+                                Intent(this@LoginActivity, RegisterActivity::class.java)
                             startActivity(intentStay)
                         }
                         val alertMessage = create()
@@ -75,11 +93,10 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
-
-
         }
 
         animation()
+        supportActionBar?.hide()
     }
 
     private fun animation() {
