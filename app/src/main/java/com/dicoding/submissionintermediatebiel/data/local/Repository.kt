@@ -37,12 +37,12 @@ class Repository private constructor(
         return apiService.register(name, email, password)
     }
 
-    suspend fun getStories(): FetchAllStoryResponse{
-        return apiService.getStories()
+    suspend fun getStories(token: String): FetchAllStoryResponse{
+        return apiService.getStories(token)
     }
 
-    suspend fun uploadImage(imageFile: MultipartBody.Part, description: RequestBody): UploadStoryResponse {
-        return apiService.uploadImage(imageFile, description)
+    suspend fun uploadImage(token: String, imageFile: MultipartBody.Part, description: RequestBody): UploadStoryResponse {
+        return apiService.uploadImage(token, imageFile, description)
     }
 
     companion object {

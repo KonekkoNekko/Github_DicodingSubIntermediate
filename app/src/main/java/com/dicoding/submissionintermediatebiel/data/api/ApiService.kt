@@ -27,11 +27,14 @@ interface ApiService {
     ): LoginResponse
 
     @GET("stories")
-    suspend fun getStories(): FetchAllStoryResponse
+    suspend fun getStories(
+        @Header("Authorization") token: String
+    ): FetchAllStoryResponse
 
     @Multipart
     @POST("stories")
     suspend fun uploadImage(
+        @Header("Authorization") token: String,
         @Part file: MultipartBody.Part,
         @Part("description") description: RequestBody,
     ): UploadStoryResponse

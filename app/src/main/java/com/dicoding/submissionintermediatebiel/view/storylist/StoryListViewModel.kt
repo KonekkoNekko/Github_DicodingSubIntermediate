@@ -11,6 +11,8 @@ import com.dicoding.submissionintermediatebiel.data.api.ListStoryItem
 import com.dicoding.submissionintermediatebiel.data.local.Repository
 import com.dicoding.submissionintermediatebiel.data.pref.UserModel
 import com.google.gson.Gson
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
@@ -32,10 +34,13 @@ class StoryListViewModel(private val repository: Repository): ViewModel() {
 
     private suspend fun getStories(){
         _isLoading.value = true
-        val storyResponse = repository.getStories()
+        val tokenStory = repository.getSession().first().token
+        Log.d("storyTokenPls", tokenStory)
+        val storyResponse = repository.getStories("Bearer "+tokenStory)
         val message = storyResponse.message
         try {
             _listStories.value = storyResponse.listStory
+            Log.d("getStoriesCheck", _listStories.toString())
             _isErrorMessage.value = message!!
         } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()

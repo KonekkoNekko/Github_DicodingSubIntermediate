@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
             if (!user.isLogin) {
                 navigateToWelcomeActivity()
             } else {
-                navigateToStoryListActivity()
+                val token = user.token
+                navigateToStoryListActivity(token)
             }
         }
 
@@ -75,8 +76,9 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun navigateToStoryListActivity() {
+    private fun navigateToStoryListActivity(token: String) {
         val intent = Intent(this, StoryListActivity::class.java)
+        intent.putExtra("TOKEN_STORY", token)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
         finish()
